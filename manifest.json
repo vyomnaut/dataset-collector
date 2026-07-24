@@ -1,0 +1,11 @@
+{
+  "name": "Dataset Collector",
+  "short_name": "Collector",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#161614",
+  "theme_color": "#161614",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

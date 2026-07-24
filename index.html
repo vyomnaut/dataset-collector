@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Dataset Collector</title>
+<meta name="theme-color" content="#161614" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon.svg" />
+<link rel="apple-touch-icon" href="icons/icon.svg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◈</span>
+    <span class="brand-text">DATASET&nbsp;COLLECTOR</span>
+  </div>
+  <div class="topbar-right">
+    <span id="queueBadge" class="badge hidden" title="Uploads waiting to sync">0 queued</span>
+    <button id="signInBtn" class="btn btn-ghost">Sign in</button>
+    <div id="userChip" class="user-chip hidden">
+      <span id="userEmail"></span>
+      <button id="signOutBtn" class="btn-link">sign out</button>
+    </div>
+  </div>
+</header>
+
+<nav class="modeSwitch">
+  <button id="modeCollect" class="mode-btn active">Collect</button>
+  <button id="modeReview" class="mode-btn">Review</button>
+</nav>
+
+<main>
+
+  <!-- COLLECT VIEW -->
+  <section id="collectView" class="view">
+    <div class="capture-card">
+      <div id="previewWrap" class="preview-wrap empty">
+        <img id="previewImg" alt="" class="hidden" />
+        <div id="previewPlaceholder" class="preview-placeholder">
+          <span class="ph-icon">＋</span>
+          <span>Tap to add a photo</span>
+        </div>
+      </div>
+      <input id="fileInput" type="file" accept="image/*" capture="environment" class="hidden" />
+
+      <div id="checksPanel" class="checks-panel hidden">
+        <div class="check-row" id="checkRes"><span class="dot"></span><span class="check-label">Resolution</span></div>
+        <div class="check-row" id="checkBlur"><span class="dot"></span><span class="check-label">Sharpness</span></div>
+        <div class="check-row" id="checkDup"><span class="dot"></span><span class="check-label">Duplicate check</span></div>
+      </div>
+
+      <div id="categoryRow" class="category-row hidden">
+        <button class="cat-btn cat-amber" data-category="small_object">
+          <span class="cat-name">small_object</span>
+          <span class="cat-hint">object occupies a small part of the frame</span>
+        </button>
+        <button class="cat-btn cat-cyan" data-category="occluded_image">
+          <span class="cat-name">occluded_image</span>
+          <span class="cat-hint">object is partly blocked / hidden</span>
+        </button>
+      </div>
+
+      <button id="retakeBtn" class="btn btn-ghost hidden">Choose a different photo</button>
+    </div>
+
+    <p id="statusLine" class="status-line"></p>
+  </section>
+
+  <!-- REVIEW VIEW -->
+  <section id="reviewView" class="view hidden">
+    <div id="passcodeGate" class="passcode-gate">
+      <label for="passcodeInput">Reviewer passcode</label>
+      <input id="passcodeInput" type="password" inputmode="numeric" />
+      <button id="passcodeSubmit" class="btn btn-primary">Enter review mode</button>
+    </div>
+
+    <div id="reviewBoard" class="review-board hidden">
+      <div class="review-tabs">
+        <button class="review-tab active" data-category="small_object">small_object</button>
+        <button class="review-tab" data-category="occluded_image">occluded_image</button>
+      </div>
+      <div id="reviewGrid" class="review-grid"></div>
+      <p id="reviewEmpty" class="status-line hidden">Nothing pending in this category.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Warning modal for failed checks -->
+<div id="warnModal" class="modal hidden">
+  <div class="modal-card">
+    <h3 id="warnTitle">This photo might not be usable</h3>
+    <ul id="warnList" class="warn-list"></ul>
+    <div class="modal-actions">
+      <button id="warnRetake" class="btn btn-ghost">Retake</button>
+      <button id="warnUploadAnyway" class="btn btn-primary">Upload anyway</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="app.js"></script>
+</body>
+</html>
