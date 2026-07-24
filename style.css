@@ -227,3 +227,42 @@ main { max-width: 480px; margin: 0 auto; padding: 20px 16px 60px; }
   font-size: 13px;
   z-index: 60;
 }
+
+.guide-btn {
+  width: 100%;
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.guide-card {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.guide-intro {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 0 0 16px;
+}
+.guide-section {
+  border-left: 3px solid var(--line);
+  padding-left: 12px;
+  margin-bottom: 16px;
+}
+.guide-section.guide-amber { border-left-color: var(--amber); }
+.guide-section.guide-cyan { border-left-color: var(--cyan); }
+.guide-section h4 {
+  margin: 0 0 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.guide-section ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.guide-section li { margin-bottom: 6px; }

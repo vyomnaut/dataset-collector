@@ -36,6 +36,7 @@
 
   <!-- COLLECT VIEW -->
   <section id="collectView" class="view">
+    <button id="guideBtn" class="btn btn-ghost guide-btn">📋 How to capture a good photo</button>
     <div class="capture-card">
       <div id="previewWrap" class="preview-wrap empty">
         <img id="previewImg" alt="" class="hidden" />
@@ -44,7 +45,7 @@
           <span>Tap to add a photo</span>
         </div>
       </div>
-      <input id="fileInput" type="file" accept="image/*" capture="environment" class="hidden" />
+      <input id="fileInput" type="file" accept="image/*" multiple class="hidden" />
 
       <div id="checksPanel" class="checks-panel hidden">
         <div class="check-row" id="checkRes"><span class="dot"></span><span class="check-label">Resolution</span></div>
@@ -97,6 +98,52 @@
     <div class="modal-actions">
       <button id="warnRetake" class="btn btn-ghost">Retake</button>
       <button id="warnUploadAnyway" class="btn btn-primary">Upload anyway</button>
+    </div>
+  </div>
+</div>
+
+<!-- Capture guidelines modal -->
+<div id="guideModal" class="modal hidden">
+  <div class="modal-card guide-card">
+    <h3>How to capture a good training photo</h3>
+
+    <p class="guide-intro">This dataset trains waste-detection models (YOLOv8 / RT-DETR) on two classes.
+    Good, varied photos matter more than a large number of similar ones.</p>
+
+    <div class="guide-section guide-amber">
+      <h4>small_object</h4>
+      <ul>
+        <li>The waste item should look genuinely small in the frame — roughly 5–15% of the total image area, not zoomed in.</li>
+        <li>Shoot from a normal standing/eye-level distance, the way a real detection camera would see it.</li>
+        <li>Keep the item fully visible and unblocked — this class is about scale, not occlusion.</li>
+        <li>Vary the background: floor, grass, road, bin area, sorting belt — real-world clutter is good, not a problem.</li>
+        <li>Vary distance and angle across photos — don't shoot every item from the same height and spot.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section guide-cyan">
+      <h4>occluded_image</h4>
+      <ul>
+        <li>Part of the object should be genuinely blocked — by another item, a bag, a hand, a bin edge, shadow, etc.</li>
+        <li>Enough of the object should still be visible that a person could still identify what it is.</li>
+        <li>Vary how much is hidden across your shots — some barely occluded, some mostly hidden — rather than all photos looking the same.</li>
+        <li>Object size can be anything here — this class is about occlusion, not scale.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h4>General rules for both</h4>
+      <ul>
+        <li>Hold the phone steady — blurry photos get flagged and are usually not worth uploading.</li>
+        <li>Use good, even lighting where possible. Avoid strong backlight that turns the object into a silhouette.</li>
+        <li>Don't shoot the exact same object/angle repeatedly — the duplicate check will flag near-identical photos, and the model learns nothing new from them.</li>
+        <li>One primary object per photo, unless you're intentionally capturing a cluttered scene.</li>
+        <li>Real environments beat staged ones — actual streets, bins, and waste piles train a better model than a clean desk setup.</li>
+      </ul>
+    </div>
+
+    <div class="modal-actions">
+      <button id="guideClose" class="btn btn-primary">Got it</button>
     </div>
   </div>
 </div>

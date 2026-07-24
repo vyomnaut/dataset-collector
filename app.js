@@ -264,6 +264,8 @@ function $(id) { return document.getElementById(id); }
 
 $('previewWrap').addEventListener('click', () => $('fileInput').click());
 $('retakeBtn').addEventListener('click', () => $('fileInput').click());
+$('guideBtn').addEventListener('click', () => $('guideModal').classList.remove('hidden'));
+$('guideClose').addEventListener('click', () => $('guideModal').classList.add('hidden'));
 
 $('fileInput').addEventListener('change', async (e) => {
   const files = Array.from(e.target.files || []);
