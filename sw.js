@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dataset-collector-v1';
+const CACHE_NAME = 'dataset-collector-v2';
 const SHELL = ['./index.html', './style.css', './app.js', './manifest.json', './icons/icon.svg'];
 
 self.addEventListener('install', (e) => {
